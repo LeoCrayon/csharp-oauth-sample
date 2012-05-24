@@ -41,6 +41,7 @@ namespace Evernote.OAuth.Wpf {
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             LoginText = "Please wait...";
+            wbLogin.Visibility = Visibility.Visible;
             var authorizer = new OAuthAuthorizer(ConsumerKey, ConsumerSecret);
             authorizer.GetRequestToken(BaseUrl + "/oauth", new Codeplex.OAuth.Parameter("oauth_callback", "http://localhost/myapp"))
             .Select(res => res.Token)
