@@ -1,0 +1,41 @@
+﻿<Window x:Class="Evernote.OAuth.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Window.Resources>
+        <Storyboard x:Key="FirstLoadAnimation">            
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="brdLogin" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <ObjectAnimationUsingKeyFrames.KeyFrames>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                        <DiscreteObjectKeyFrame.Value>
+                            <Visibility>Visible</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>                    
+                </ObjectAnimationUsingKeyFrames.KeyFrames>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="HidePopupAnimation">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="brdLogin" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <ObjectAnimationUsingKeyFrames.KeyFrames>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                        <DiscreteObjectKeyFrame.Value>
+                            <Visibility>Collapsed</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                </ObjectAnimationUsingKeyFrames.KeyFrames>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Grid>
+        <Button Click="Button_Click" Content="{Binding LoginText}" />
+        <Border BorderThickness="5"
+                x:Name="brdLogin"
+                Visibility="Collapsed"
+                UseLayoutRounding="True"
+                Margin="15 25"
+                Background="White">
+            <WebBrowser x:Name="wbLogin">
+            </WebBrowser>
+        </Border>        
+    </Grid>
+</Window>
